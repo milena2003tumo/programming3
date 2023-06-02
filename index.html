@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<style>
+  canvas {
+	margin-left: 1000px;
+  margin-top: -600px
+}
+body {
+	background-image: linear-gradient(#c4f0e7, #ad96c2);
+}
+  
+.Game-Of-Life {
+	height: 100px;
+	text-align: left;
+	color: #005900 ;
+	font-size: 50px;
+  }
+
+
+.Info {
+	position: fixed;
+	bottom: 0;
+	right: 1;
+	width: 500px;
+	font-size: 35px;
+}
+.InfoN {
+	position: fixed;
+	bottom: 1%;
+	right: 0%;
+	width: 500px;
+	font-size:45px;
+}
+.grass {
+  background-color: green;
+	bottom: 1%;
+  height: 50px;
+  width: 100px;
+	
+
+}
+
+
+.grassEater {
+  height: 50px;
+  width: 100px;
+  background-color: yellow;
+}
+.predator {
+  height: 50px;
+  width: 100px;
+  background-color: blue;
+}
+.fire {
+  height: 50px;
+  width: 100px;
+  background-color: #e25822;
+}
+.water {
+  height: 50px;
+  width: 100px;
+  background-color: #d4f1f9;
+}
+
+.dv{
+  display: flex
+  
+}
+
+p{
+  margin-left: 120px;
+  margin-top: 20px;
+  font-size: 30px;
+ 
+}
+p {
+  color: #005900;
+background: #FFFCA8;
+text-shadow: #FFFCA8 2px 2px 0px, #9C9C9C 4px 4px 0px;
+
+}
+</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Թումո Ստեփանակերտ</title>
+    <style>
+    table, th, td {
+      margin-left: 10%;
+  border:5px solid #7a5898;
+  border-radius: 5px;
+}
+</style>
+</head>
+<body>
+  <table style="width:70%">
+    <tr>
+      <th>Կերպար</th>
+      <th>Նկարագրություն</th>
+    </tr>
+    <tr>
+      <td>Խոտ</td>
+      <td>Խոտը բազմանում է հարևան 8 վանդակներում:
+      </td>
+      
+    </tr>
+    <tr>
+      <td>Խոտակեր</td>
+      <td>Խոտակերը ուտում է խոտին և էներգիան ավելացնելով բազմանում է: Իսկ չգտնելու դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և խոտակերը մահանում է: </td>
+    </tr>
+    <tr>
+      <td>Գիշատիչ</td>
+      <td>Գիշատիչը ուտում է և՛ խոտին, և՛ խոտակերին: Գիշատիչը ուտելով խոտին կամ խոտակերին էներգիան ավելացնում է և բազմանում: Իսկ չգտնելու դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և գիշատիչը մահանում է: 
+      </td>
+    </tr>
+    <tr>
+      <td>Կրակ</td>
+      <td>Կրակը «այրում է» խոտերը, խոտակերին ու գիշատչին: Ուտելով խոտերը/խոտակերին/գիշատչին էներգիան ավելացնում է և բազմանում: Հակառակ դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և գիշատիչը մահանում է: 
+      </td>
+    </tr>
+    <tr>
+      <td>Ջուր</td>
+      <td>Ջուրը «հանգցնում է» կրակը: Ջուրը ուտելով կրակին իր էներգիան ավելացնում և բազմանում է:
+      </td>
+    </tr>
+  </table>
+
+    <div class="Info" style="color: rgba(0, 49, 128, 0.854);">Ծրագրավորում II <br> 05.2022</div>
+    <div class="InfoN" style="color: #005900;">Միլենա Ավետիսյան</div>
+    <div class="Game-Of-Life">
+      Game Of Life
+      </div> 
+    <br><div style="border: #005900 3px solid" class="grass">  <p> Grass</p>   </div></br>
+    <br><div class="grassEater"><p>GrassEater</p></div></br>
+    <br><div class="predator"><p>Predator</p></div></br>
+    <br><div class="fire"><p>Fire</p></div></br>
+    <br><div class="water"><p>Water</p></div></body><br>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+    <script src="class.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
