@@ -16,10 +16,10 @@ class Predator extends LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
-    
+
     chooseCell(char, char1) {
         this.getNewCoordinates()
-        return super.chooseCell (char, char1)
+        return super.chooseCell(char, char1)
     }
 
     mul() {

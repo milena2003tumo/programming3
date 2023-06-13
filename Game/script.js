@@ -81,22 +81,22 @@ function setup() {
      for (var y = 0; y < matrix.length; y++) {
           for (var x = 0; x < matrix[y].length; x++) {
                if (matrix[y][x] == 1) {
-                    var gr = new Grass(x, y);
+                    var gr = new Grass(x, y, 1);
                     grassArr.push(gr);
                }
                else if (matrix[y][x] == 2) {
 
-                    var grEat = new GrassEater(x, y);
+                    var grEat = new GrassEater(x, y, 2);
                     grassEaterArr.push(grEat);
                } else if (matrix[y][x] == 3) {
 
-                    var pre = new Predator(x, y);
+                    var pre = new Predator(x, y, 3);
                     predatorArr.push(pre);
                } else if (matrix[y][x] == 4) {
-                    var fire = new Fire (x, y);
+                    var fire = new Fire (x, y, 4);
                     fireArr.push(fire);
                } else if (matrix[y][x] == 5) {
-                    var water = new Water (x,y);
+                    var water = new Water (x, y, 5);
                     waterArr.push (water)
                }
 
