@@ -40,7 +40,6 @@ module.exports = class GrassEater extends LivingCreature {
             this.multiply = 0
         }
 
-
     }
 
 

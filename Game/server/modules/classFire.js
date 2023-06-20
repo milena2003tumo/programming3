@@ -41,9 +41,10 @@ module.exports = class Fire extends LivingCreature {
 
             this.multiply = 0
         }
+        setTimeout(() => {
+          }, 5000);
+    }   
 
-
-    }
 
     move() {
         this.energy--

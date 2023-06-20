@@ -1,10 +1,12 @@
 const LivingCreature = require("./classLivingCreature");
 let random = require("./random");
 
+
 module.exports = class Grass extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
         this.multiply = 0;
+        this.color = "yellowgreen";
     }
     mul() {
         this.multiply++;
@@ -14,6 +16,14 @@ module.exports = class Grass extends LivingCreature {
             grassArr.push(newGrass);
             matrix[newCell[1]][newCell[0]] = this.index;
             this.multiply = 0;
+        }
+    }
+
+    changeColor() {
+        if (currentWeather === "spring") {
+            this.color = "spring-color";
+        } else if (currentWeather === "summer") {
+            this.color = "summer-color";
         }
     }
 }
