@@ -16,10 +16,31 @@ infoButton.addEventListener("click", function() {
   } else {
     infoText.style.display = "none";
   }
+// Add event listeners to the buttons
+document.getElementById("springButton").addEventListener("click", changeToSpring);
+document.getElementById("summerButton").addEventListener("click", changeToSummer);
+
+// Function to change the colors to spring
+function changeToSpring() {
+    currentWeather = "spring";
+    // Call the changeColor method for each grass instance
+    for (let i = 0; i < grassArr.length; i++) {
+        grassArr[i].changeColor();
+    }
+}
+
+// Function to change the colors to summer
+function changeToSummer() {
+    currentWeather = "summer";
+    // Call the changeColor method for each grass instance
+    for (let i = 0; i < grassArr.length; i++) {
+        grassArr[i].changeColor();
+    }
+}
+
 });
   });
   
-
 
 
 function setup() {
@@ -61,12 +82,26 @@ function drawMatrix(data) {
                 rect(x * side, y * side, side, side);
 
             }
+
+            if (frameCount % 60 == 0) {
+     console.log(frameCount);
+   let sendData = {
+      grasses: grassArr.length,
+      grassEaters: grassEaterArr.length,
+      predators: predatorArr.length,
+      fire: fireArr.length,
+      water: waterArr.length,
+   }
+
+     socket.emit("sendStatistics", stateGenerator);
+     console.log("Խոտ - " + classGrass + ", " + "Խոտակեր - " + classGrassEater + ", " + "Գիշատիչ - " + classPredator + ", " + "Ջուր- " + classWater + ", " + "Կրակ - " + classFire);
+}
+
         }
     }
 }
 
 socket.on("matrix", drawMatrix);
-socket.on("sendStatistics", stateGenerator)
 
 // if (frameCount % 60 == 0) {
 //      console.log(frameCount);
