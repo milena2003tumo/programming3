@@ -41,9 +41,8 @@ module.exports = class Fire extends LivingCreature {
 
             this.multiply = 0
         }
-       
+  
     }
-
     move() {
         this.energy--
             var emptyCells = this.chooseCell(0)

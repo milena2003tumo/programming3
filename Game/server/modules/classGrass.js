@@ -7,6 +7,15 @@ module.exports = class Grass extends LivingCreature {
         super(x, y, index);
         this.multiply = 0;
     }
+
+    changeColor() {
+        if (currentWeather === "spring") {
+            this.color = "spring-color";
+        } else if (currentWeather === "summer") {
+            this.color = "summer-color";
+        }
+    }
+
     mul() {
         this.multiply++;
         var newCell = random(this.chooseCell(0));
@@ -16,5 +25,9 @@ module.exports = class Grass extends LivingCreature {
             matrix[newCell[1]][newCell[0]] = this.index;
             this.multiply = 0;
         }
+        setTimeout(() => {
+            this.mul();
+        }, 2000);
     }
 }
+  
