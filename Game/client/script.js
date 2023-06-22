@@ -3,6 +3,25 @@ var side = 25;
 var n = 25;
 var m = 25;
 
+document.addEventListener('DOMContentLoaded', function() {
+   // Get the button element and the info text element
+const infoButton = document.getElementById("infoButton");
+const infoText = document.getElementById("infoText");
+
+// Add click event listener to the button
+infoButton.addEventListener("click", function() {
+  // Toggle the display of the info text
+  if (infoText.style.display === "none") {
+    infoText.style.display = "block";
+  } else {
+    infoText.style.display = "none";
+  }
+});
+  });
+  
+
+
+
 function setup() {
     createCanvas(n * side, m * side)
     frameRate(20)
