@@ -2,50 +2,70 @@ socket = io();
 var side = 25;
 var n = 25;
 var m = 25;
+
 function setup() {
-     createCanvas(n * side, m * side)
-     frameRate(20)
-     background('#e8e8e8');
+    createCanvas(n * side, m * side)
+    frameRate(20)
+    background('#e8e8e8');
 }
+
 function drawMatrix(data) {
-     matrix = data.matrix;
-     for (var y = 0; y < matrix.length; y++) {
-          for (var x = 0; x < matrix[y].length; x++) {
-               var toBot = side - side * 0.1
-               textSize(toBot);
+    matrix = data.matrix;
+    for (var y = 0; y < matrix.length; y++) {
+        for (var x = 0; x < matrix[y].length; x++) {
+            var toBot = side - side * 0.1
+            textSize(toBot);
 
-               if (matrix[y][x] == 1) {
+            if (matrix[y][x] == 1) {
 
-                    fill("green")
-                    rect(x * side, y * side, side, side);
-                    text('🌿', x * side, y * side + toBot);
-               } else if (matrix[y][x] == 2) {
-                    fill("yellow")
-                    rect(x * side, y * side, side, side);
-                    text('👾', x * side, y * side + toBot);
-               } else if (matrix[y][x] == 3) {
-                    fill("blue")
-                    rect(x * side, y * side, side, side);
-                    text('👻', x * side, y * side + toBot);
-               } else if (matrix[y][x] == 4) {
-                    fill("#e25822")
-                    rect(x * side, y * side, side, side);
-                    text('🔥', x * side, y * side + toBot);
-               } else if (matrix[y][x] == 5) {
-                    fill("#d4f1f9")
-                    rect(x * side, y * side, side, side);
-                    text('💧', x * side, y * side + toBot);
-               } else {
-                    fill("gray")
-                    rect(x * side, y * side, side, side);
+                fill("yellowgreen")
+                rect(x * side, y * side, side, side);
+                text('🌿', x * side, y * side + toBot);
+            } else if (matrix[y][x] == 2) {
+                fill("yellow")
+                rect(x * side, y * side, side, side);
+                text('👾', x * side, y * side + toBot);
+            } else if (matrix[y][x] == 3) {
+                fill("blue")
+                rect(x * side, y * side, side, side);
+                text('👻', x * side, y * side + toBot);
+            } else if (matrix[y][x] == 4) {
+                fill("#e25822")
+                rect(x * side, y * side, side, side);
+                text('🔥', x * side, y * side + toBot);
+            } else if (matrix[y][x] == 5) {
+                fill("#d4f1f9")
+                rect(x * side, y * side, side, side);
+                text('💧', x * side, y * side + toBot);
+            } else {
+                fill("gray")
+                rect(x * side, y * side, side, side);
 
-               }
-          }
-     }
+            }
+        }
+    }
 }
 
 socket.on("matrix", drawMatrix);
 socket.on("sendStatistics", stateGenerator)
+
+// if (frameCount % 60 == 0) {
+//      console.log(frameCount);
+//      let classGrass = grassArr.length;
+//      let classGrassEater = grassEaterArr.length;
+//      let classPredator = predatorArr.length;
+//      let classFire = fireArr.length;
+//      let classWater = waterArr.length;
+//      let statistic = {
+//           grass,
+//           grassEater,
+//           predator,
+//           kind,
+//           important
+//      }
+//      socket.emit("send static", statistic);
+//      console.log("Խոտ - " + grass + ", " + "Խոտակեր - " + grassEater + ", " + "Գիշատիչ - " + predator + ", " + "Բարի կերպար - " + kind + ", " + "Թագուհի - " + important);
+// }
 
 // function matrixGenerator(matrixSize, grassCount,grassEaterCount,predatorCount, fireCount, waterCount) {
 

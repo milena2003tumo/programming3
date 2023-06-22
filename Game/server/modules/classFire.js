@@ -27,10 +27,10 @@ module.exports = class Fire extends LivingCreature {
 
     mul() {
         this.multiply++
-        var emptyCells = this.chooseCell(0)
+            var emptyCells = this.chooseCell(0)
         var newCell = random(emptyCells)
 
-        if (newCell && this.multiply >= 40) {
+        if (newCell && this.multiply >= 20) {
 
             var newX = newCell[0]
             var newY = newCell[1]
@@ -41,14 +41,12 @@ module.exports = class Fire extends LivingCreature {
 
             this.multiply = 0
         }
-        setTimeout(() => {
-          }, 5000);
-    }   
-
+       
+    }
 
     move() {
         this.energy--
-        var emptyCells = this.chooseCell(0)
+            var emptyCells = this.chooseCell(0)
         var newCell = random(emptyCells)
 
         if (newCell && this.energy >= 0) {
@@ -78,7 +76,7 @@ module.exports = class Fire extends LivingCreature {
         if (newCell) {
             this.energy++
 
-            var newX = newCell[0]
+                var newX = newCell[0]
             var newY = newCell[1]
 
             matrix[newY][newX] = matrix[this.y][this.x]
