@@ -101,6 +101,7 @@ function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount,
 }
 
 matrix = matrixGenerator(25, 25, 10, 6, 8, 4)
+var Female = true;
 
 for (var y = 0; y < matrix.length; y++) {
     for (var x = 0; x < matrix[y].length; x++) {
@@ -108,11 +109,11 @@ for (var y = 0; y < matrix.length; y++) {
             var gr = new Grass(x, y, 1);
             grassArr.push(gr);
         } else if (matrix[y][x] == 2) {
-
-            var grEat = new GrassEater(x, y, 2);
+            Female = !Female;
+            var grEat = new GrassEater(x, y, 2, Female);
             grassEaterArr.push(grEat);
+            
         } else if (matrix[y][x] == 3) {
-
             var pre = new Predator(x, y, 3);
             predatorArr.push(pre);
         } else if (matrix[y][x] == 4) {

@@ -2,9 +2,10 @@ const LivingCreature = require("./classLivingCreature");
 let random = require("./random");
 
 module.exports = class Fire extends LivingCreature {
-    constructor(x, y, index) {
+    constructor(x, y, index, Female) {
         super(x, y, index);
         this.multiply = 0;
+        this.Female = Female;
     }
 
     getNewCoordinates() {
@@ -30,13 +31,13 @@ module.exports = class Fire extends LivingCreature {
             var emptyCells = this.chooseCell(0)
         var newCell = random(emptyCells)
 
-        if (newCell && this.multiply >= 20) {
+        if (newCell && this.multiply >= 20 && this.timer > 15) {
 
             var newX = newCell[0]
             var newY = newCell[1]
 
             matrix[newY][newX] = 4
-            var fire = new Fire(newX, newY)
+            var fire = new Fire(newX, newY, !this.Female)
             fireArr.push(fire)
 
             this.multiply = 0
