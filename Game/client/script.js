@@ -2,52 +2,51 @@ socket = io();
 var side = 25;
 var n = 25;
 var m = 25;
+var classGrassColor = "#green";
+var classGrassEater = "red";
+var classFireColor = "orange";
+var classPredator = "black";
+var classWaterColor = "blue";
+function setup() {
+    createCanvas(n * side, m * side)
+    frameRate(20)
+    background('#e8e8e8'); 
 
-document.addEventListener('DOMContentLoaded', function() {
-   // Get the button element and the info text element
+    // button1.addEventListener("click", onColorChange);
+    // button1 = document.getElementById('summer').addEventListener("click", onColorChange);
+    // button2 = document.getElementById('spring'.addEventListener("click", onColorChange));
+    // button3 = document.getElementById('autumn').addEventListener("click", onColorChange);
+    // button4 = document.getElementById('winter').addEventListener("click", onColorChange);
+
 const infoButton = document.getElementById("infoButton");
 const infoText = document.getElementById("infoText");
 
-// Add click event listener to the button
 infoButton.addEventListener("click", function() {
-  // Toggle the display of the info text
   if (infoText.style.display === "none") {
     infoText.style.display = "block";
   } else {
     infoText.style.display = "none";
   }
-// Add event listeners to the buttons
-document.getElementById("springButton").addEventListener("click", changeToSpring);
-document.getElementById("summerButton").addEventListener("click", changeToSummer);
-
-// Function to change the colors to spring
-function changeToSpring() {
-    currentWeather = "spring";
-    // Call the changeColor method for each grass instance
-    for (let i = 0; i < grassArr.length; i++) {
-        grassArr[i].changeColor();
-    }
-}
-
-// Function to change the colors to summer
-function changeToSummer() {
-    currentWeather = "summer";
-    // Call the changeColor method for each grass instance
-    for (let i = 0; i < grassArr.length; i++) {
-        grassArr[i].changeColor();
-    }
-}
-
 });
-  });
-  
 
 
-function setup() {
-    createCanvas(n * side, m * side)
-    frameRate(20)
-    background('#e8e8e8');
-}
+mul = 5; 
+ 
+    function onColorChange() {
+        if (event.target.id == "summer") {
+            mul = 10
+            classGrassColor = "#12D804"
+        } else if (event.target.id == "spring") {
+           classGrassColor = "#118B08"
+        } else if (event.target.id == "autumn") {
+            classGrassColor = "#809F18"
+        } else if (event.target.id == "autumn") {
+           classGrassColor = "#white"
+        }
+        socket.on("matrix", drawMatrix);
+        io.socket.emit("createObjectAfterLick", mul)
+
+    }
 
 function drawMatrix(data) {
     matrix = data.matrix;
@@ -55,26 +54,24 @@ function drawMatrix(data) {
         for (var x = 0; x < matrix[y].length; x++) {
             var toBot = side - side * 0.1
             textSize(toBot);
-
-            if (matrix[y][x] == 1) {
-
-                fill("yellowgreen")
+            if (matrix[y][x] == 1) {    
                 rect(x * side, y * side, side, side);
                 text('🌿', x * side, y * side + toBot);
+                fill("#12D804");
             } else if (matrix[y][x] == 2) {
-                fill("yellow")
+                // fill(classGrassEaterColor)
                 rect(x * side, y * side, side, side);
                 text('👾', x * side, y * side + toBot);
             } else if (matrix[y][x] == 3) {
-                fill("blue")
+                // fill(classPredatorColor)
                 rect(x * side, y * side, side, side);
                 text('👻', x * side, y * side + toBot);
             } else if (matrix[y][x] == 4) {
-                fill("#e25822")
+                // fill(classFireColor)
                 rect(x * side, y * side, side, side);
                 text('🔥', x * side, y * side + toBot);
             } else if (matrix[y][x] == 5) {
-                fill("#d4f1f9")
+                // fill(classWaterColor)
                 rect(x * side, y * side, side, side);
                 text('💧', x * side, y * side + toBot);
             } else {
@@ -82,6 +79,8 @@ function drawMatrix(data) {
                 rect(x * side, y * side, side, side);
 
             }
+            // socket.on("matrix", drawMatrix);
+
 
             if (frameCount % 60 == 0) {
      console.log(frameCount);
@@ -263,28 +262,4 @@ socket.on("matrix", drawMatrix);
 
 //           }
 //      }
-
-
-
-//      for( var i in grassArr){
-//           grassArr[i].mul()
-//      }
-
-//      for(let i in grassEaterArr){
-//           grassEaterArr[i].mul()
-//           grassEaterArr[i].eat()
-//      }
-
-//      for(let j in predatorArr){
-//           predatorArr[j].mul()
-//           predatorArr[j].eat()
-//      }
-//      for(let j in fireArr){
-//           fireArr[j].mul()
-//           fireArr[j].eat()
-//      }
-//      for (let j in waterArr) {
-//           waterArr[j].mul ()
-//           waterArr[j].eat ()
-//      }
-// }
+}
