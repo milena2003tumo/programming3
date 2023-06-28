@@ -1,7 +1,7 @@
 {
-  "grasses": 20,
-  "grassEaters": 1,
-  "predators": 5,
+  "grasses": 333,
+  "grassEaters": 0,
+  "predators": 6,
   "fire": 8,
-  "water": 3
+  "water": 4
 }
