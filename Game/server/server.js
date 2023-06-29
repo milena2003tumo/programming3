@@ -26,13 +26,13 @@ Predator = require("./modules/classPredator");
 Fire = require("./modules/classFire");
 Water = require("./modules/classWater");
 
-var flag = false;
-io.on("connection", function(socket) {
-    if (flag) {
-        setInterval(drawForBackend, 5000);
-        flag = true;
-    }
-});
+
+io.on("connection", function (socket) {
+    socket.on("createObjectAfterLick", function (data) {
+       multForGrass = data.mul
+    });
+    setInterval(drawForBackend, 5000);
+ });
 
 
 function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount, fireCount, waterCount) {
@@ -127,11 +127,11 @@ for (var y = 0; y < matrix.length; y++) {
     }
 }
 
-
+multForGrass = 8
 function drawForBackend() {
 
     for (var i in grassArr) {
-        grassArr[i].mul()
+        grassArr[i].mul(multForGrass)
     }
 
     for (let i in grassEaterArr) {
@@ -154,7 +154,15 @@ function drawForBackend() {
 
     let sendData = {
         matrix: matrix
-    }
+    };
+
+    setInterval( generateStatistic, 60000);
+    io.sockets.emit("matrix", sendData);
+}
+setInterval(drawForBackend, 500)
+
+
+function generateStatistic (){
     statistics = {
         grasses: grassArr.length,
         grassEaters: grassEaterArr.length,
@@ -164,12 +172,8 @@ function drawForBackend() {
     }
     fs.writeFileSync('statistics.json', JSON.stringify(statistics, undefined, 2))
     mystatistics = fs.readFileSync('statistics.json').toString()
-
     io.sockets.emit("sendStatistics", JSON.parse(mystatistics))
-    io.sockets.emit("matrix", sendData)
 }
-setInterval(drawForBackend, 500)
-
 //    let sendData = {
 //       grasses: grassArr.length,
 //       grassEaters: grassEaterArr.length,

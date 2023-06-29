@@ -9,10 +9,10 @@ module.exports = class Grass extends LivingCreature {
 
     }
 
-    mul() {
+    mul(multForGrass) {
         this.multiply++;
         var newCell = random(this.chooseCell(0));
-        if (newCell && this.multiply >= 30) {
+        if (newCell && this.multiply >= multForGrass) {
             var newGrass = new Grass(newCell[0], newCell[1], this.index);
             grassArr.push(newGrass);
             matrix[newCell[1]][newCell[0]] = this.index;
