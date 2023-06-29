@@ -24,12 +24,12 @@ module.exports = class GrassEater extends LivingCreature {
         return super.chooseCell(char);
     }
 
-    mul() {
+    mul(multForGrassEater) {
         this.multiply++
         var emptyCells = this.chooseCell(0)
         var newCell = random(emptyCells)
 
-        if (newCell && this.multiply >= 10 && this.timer > 20) {
+        if (newCell && this.multiply >= multForGrassEater) {
 
             var newX = newCell[0]
             var newY = newCell[1]

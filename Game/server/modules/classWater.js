@@ -26,12 +26,12 @@ module.exports = class Water extends LivingCreature {
         return super.chooseCell(char3)
     }
 
-    mul() {
+    mul(multForWater) {
         this.multiply++
         var emptyCells = this.chooseCell(0)
         var newCell = random(emptyCells)
 
-        if (newCell && this.multiply >= 20 && this.timer > 10) {
+        if (newCell && this.multiply >= multForWater) {
 
             var newX = newCell[0]
             var newY = newCell[1]

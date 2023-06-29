@@ -26,12 +26,12 @@ module.exports = class Predator extends LivingCreature {
         return super.chooseCell(char, char1)
     }
 
-    mul() {
+    mul(multForPredator) {
         this.multiply++
         var emptyCells = this.chooseCell(0)
         var newCell = random(emptyCells)
 
-        if (newCell && this.multiply >= 15 && this.timer > 20) {
+        if (newCell && this.multiply >= multForPredator) {
 
             var newX = newCell[0]
             var newY = newCell[1]

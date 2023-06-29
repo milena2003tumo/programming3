@@ -26,12 +26,12 @@ module.exports = class Fire extends LivingCreature {
         return super.chooseCell(char, char1, char2);
     }
 
-    mul() {
+    mul(multForFire) {
         this.multiply++
             var emptyCells = this.chooseCell(0)
         var newCell = random(emptyCells)
 
-        if (newCell && this.multiply >= 20 && this.timer > 15) {
+        if (newCell && this.multiply >= multForFire) {
 
             var newX = newCell[0]
             var newY = newCell[1]

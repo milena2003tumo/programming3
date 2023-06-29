@@ -5,11 +5,11 @@ var server = require('http').Server(app);
 var io = require('socket.io')(server);
 app.use(express.static("../client"));
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
     res.redirect("index.html");
 });
 
-server.listen(7000, function() {
+server.listen(7000, function () {
     console.log("App is running on port 7000");
 });
 
@@ -29,10 +29,14 @@ Water = require("./modules/classWater");
 
 io.on("connection", function (socket) {
     socket.on("createObjectAfterLick", function (data) {
-       multForGrass = data.mul
+        multForGrass = data.mul
+        multForGrassEater = data.mul
+        multForPredator = data.mul
+        multForWater = data.mul
+        multForFire = data.mul
     });
     setInterval(drawForBackend, 5000);
- });
+});
 
 
 function matrixGenerator(matrixSize, grassCount, grassEaterCount, predatorCount, fireCount, waterCount) {
@@ -112,7 +116,7 @@ for (var y = 0; y < matrix.length; y++) {
             Female = !Female;
             var grEat = new GrassEater(x, y, 2, Female);
             grassEaterArr.push(grEat);
-            
+
         } else if (matrix[y][x] == 3) {
             var pre = new Predator(x, y, 3);
             predatorArr.push(pre);
@@ -127,7 +131,11 @@ for (var y = 0; y < matrix.length; y++) {
     }
 }
 
-multForGrass = 8
+multForGrass = 3
+multForGrassEater = 10
+multForPredator = 6
+multForWater = 4
+multForFire = 11
 function drawForBackend() {
 
     for (var i in grassArr) {
@@ -135,20 +143,20 @@ function drawForBackend() {
     }
 
     for (let i in grassEaterArr) {
-        grassEaterArr[i].mul()
+        grassEaterArr[i].mul(multForGrassEater)
         grassEaterArr[i].eat()
     }
 
     for (let j in predatorArr) {
-        predatorArr[j].mul()
+        predatorArr[j].mul(multForPredator)
         predatorArr[j].eat()
     }
     for (let j in fireArr) {
-        fireArr[j].mul()
+        fireArr[j].mul(multForFire)
         fireArr[j].eat()
     }
     for (let j in waterArr) {
-        waterArr[j].mul()
+        waterArr[j].mul(multForWater)
         waterArr[j].eat()
     }
 
@@ -156,13 +164,13 @@ function drawForBackend() {
         matrix: matrix
     };
 
-    setInterval( generateStatistic, 60000);
+    setInterval(generateStatistic, 60000);
     io.sockets.emit("matrix", sendData);
 }
 setInterval(drawForBackend, 500)
 
 
-function generateStatistic (){
+function generateStatistic() {
     statistics = {
         grasses: grassArr.length,
         grassEaters: grassEaterArr.length,
