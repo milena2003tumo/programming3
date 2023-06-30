@@ -77,11 +77,11 @@ function drawMatrix(data) {
             } else if (matrix[y][x] == 2) {
                 fill(classGrassEaterColor)
                 rect(x * side, y * side, side, side);
-                text('👾', x * side, y * side + toBot);
+                text('🐏', x * side, y * side + toBot);
             } else if (matrix[y][x] == 3) {
                 fill(classPredatorColor)
                 rect(x * side, y * side, side, side);
-                text('👻', x * side, y * side + toBot);
+                text('👾', x * side, y * side + toBot);
             } else if (matrix[y][x] == 4) {
                 fill(classFireColor)
                 rect(x * side, y * side, side, side);

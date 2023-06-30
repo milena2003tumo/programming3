@@ -6,14 +6,15 @@
 
     <style>
         canvas {
-            margin-left: 1000px;
-            margin-top: -600px;
+            margin-left: 800px;
+            margin-top: -550px;
             position: relative;
 
         }
 
         body {
-            background-image: linear-gradient(#c4f0e7, #ad96c2);
+            background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 36%, rgba(215,177,210,1) 69%, rgba(148,187,233,1) 100%);
         }
 
         .Game-Of-Life {
@@ -29,7 +30,7 @@
             bottom: 0;
             right: 1;
             width: 500px;
-            font-size: 35px;
+            font-size: 20px;
         }
 
         .InfoN {
@@ -43,29 +44,52 @@
         .grass {
             height: 50px;
             width: 100px;
-            background-color: green;
+            background-color: #d4f1f9;
             border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
         }
 
         .grassEater {
             height: 50px;
             width: 100px;
-            background-color: yellow;
             border-radius: 8px;
+            background-color: #d4f1f9;
+            text-align: center;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .predator {
             height: 50px;
             width: 100px;
-            background-color: blue;
             border-radius: 8px;
+            background-color: #d4f1f9;
+            text-align: center;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
         }
 
         .fire {
             height: 50px;
             width: 100px;
-            background-color: #e25822;
+            background-color: #d4f1f9;
             border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
         }
 
         .water {
@@ -73,7 +97,13 @@
             width: 100px;
             background-color: #d4f1f9;
             border-radius: 8px;
+            text-align: center;
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
 
         .dv {
             display: flex
@@ -93,7 +123,6 @@
 
         button {
             background-color: #4CAF50;
-            /* Green */
             border: none;
             color: white;
             padding: 15px 32px;
@@ -110,9 +139,6 @@
         button:hover {
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
         }
-
-
-        
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -136,67 +162,37 @@
 </head>
 
 <body>
-    <!-- <table style="width:40%">
 
-        <tr>
-            <th>Կերպար</th>
-            <th>Նկարագրություն</th>
-        </tr>
-        <tr>
-            <td>Խոտ</td>
-            <td>Խոտը բազմանում է հարևան 8 վանդակներում:
-            </td>
 
-        </tr>
-        <tr>
-            <td>Խոտակեր</td>
-            <td>Խոտակերը ուտում է խոտին և էներգիան ավելացնելով բազմանում է: Իսկ չգտնելու դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և խոտակերը մահանում է: </td>
-        </tr>
-        <tr>
-            <td>Գիշատիչ</td>
-            <td>Գիշատիչը ուտում է և՛ խոտին, և՛ խոտակերին: Գիշատիչը ուտելով խոտին կամ խոտակերին էներգիան ավելացնում է և բազմանում: Իսկ չգտնելու դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և գիշատիչը մահանում է:
-            </td>
-        </tr>
-        <tr>
-            <td>Կրակ</td>
-            <td>Կրակը «այրում է» խոտերը, խոտակերին ու գիշատչին: Ուտելով խոտերը/խոտակերին/գիշատչին էներգիան ավելացնում է և բազմանում: Հակառակ դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և գիշատիչը մահանում է:
-            </td>
-        </tr>
-        <tr>
-            <td>Ջուր</td>
-            <td>Ջուրը «հանգցնում է» կրակը: Ջուրը ուտելով կրակին իր էներգիան ավելացնում և բազմանում է:
-            </td>
-        </tr>
-    </table> -->
-
-    <div class="Info" style="color: rgba(0, 49, 128, 0.854);">Ծրագրավորում III <br> 06.2023</div>
-    <div class="InfoN" style="color: #005900;">Միլենա Ավետիսյան</div>
+    <div class="Info" style="color: (#000000)">Ծրագրավորում III <br> 06.2023</div>
+    <div class="InfoN" style="color: (#000000);">Միլենա Ավետիսյան</div>
     <div class="Game-Of-Life">
         Game Of Life
     </div>
     <br>
-    <div style="border: #005900 3px solid" class="grass">
-        <p> Grass</p>
+    <div style="border: #005900 0px solid" class="grass">
+        <span class="grass">🌿 - Grass </span>
     </div>
     </br>
     <br>
     <div class="grassEater">
-        <p>GrassEater</p>
+
+        <span class="grassEater">🐏 - GrassEater </span>
     </div>
     </br>
     <br>
     <div class="predator">
-        <p>Predator</p>
+        <span class="predator">👾 - Predator </span>
     </div>
     </br>
     <br>
     <div class="fire">
-        <p>Fire</p>
+        <span class="fire">🔥 - Fire </span>
     </div>
     </br>
     <br>
     <div class="water">
-        <p>Water</p>
+        <span class="water">💧 - Water </span>
     </div>
 
 </body><br>
