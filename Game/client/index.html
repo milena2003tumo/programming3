@@ -3,6 +3,10 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="./pure-snow.js" defer></script>
 
     <style>
         canvas {
@@ -13,14 +17,14 @@
         }
 
         body {
-            background: rgb(238,174,202);
-background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 36%, rgba(215,177,210,1) 69%, rgba(148,187,233,1) 100%);
+            background: rgb(238, 174, 202);
+            background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(220, 176, 208, 1) 36%, rgba(215, 177, 210, 1) 69%, rgba(148, 187, 233, 1) 100%);
         }
 
         .Game-Of-Life {
             height: 100px;
             text-align: left;
-            color: #005900;
+            color: (#000000);
             font-size: 50px;
 
         }
@@ -44,7 +48,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 
         .grass {
             height: 50px;
             width: 100px;
-            background-color: #d4f1f9;
+            background-color: #59b1c7;
             border-radius: 8px;
             text-align: center;
             font-size: 20px;
@@ -58,7 +62,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 
             height: 50px;
             width: 100px;
             border-radius: 8px;
-            background-color: #d4f1f9;
+            background-color:  #59b1c7;
             text-align: center;
             font-size: 20px;
             display: flex;
@@ -70,7 +74,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 
             height: 50px;
             width: 100px;
             border-radius: 8px;
-            background-color: #d4f1f9;
+            background-color:  #59b1c7;
             text-align: center;
             font-size: 20px;
             display: flex;
@@ -82,7 +86,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 
         .fire {
             height: 50px;
             width: 100px;
-            background-color: #d4f1f9;
+            background-color:  #59b1c7;
             border-radius: 8px;
             text-align: center;
             font-size: 20px;
@@ -95,7 +99,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 
         .water {
             height: 50px;
             width: 100px;
-            background-color: #d4f1f9;
+            background-color:  #59b1c7;
             border-radius: 8px;
             text-align: center;
             font-size: 20px;
@@ -139,6 +143,22 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 
         button:hover {
             box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
         }
+        body {
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow-x: hidden;
+  min-height: 100vh;
+  overflow-y: hidden;
+  color: white;
+}
+
+.snowflake {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(white, white);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 10px white);
+}
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -170,7 +190,7 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 
         Game Of Life
     </div>
     <br>
-    <div style="border: #005900 0px solid" class="grass">
+    <div style="border: (#000000) 0px solid" class="grass">
         <span class="grass">🌿 - Grass </span>
     </div>
     </br>
@@ -195,62 +215,70 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(220,176,208,1) 
         <span class="water">💧 - Water </span>
     </div>
 
-</body><br>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.snowfall/1.7.0/jquery.snowfall.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
-<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.snowfall/1.7.0/jquery.snowfall.min.js"></script>
-<script type="text/javascript" src="script.js"></script>
+    <button id="Spring">Spring</button>
+    <button id="Summer">Summer</button>
+    <button id="Winter">Winter</button>
 
 
-<button id="Spring">Spring</button>
-<button id="Summer">Summer</button>
-<button id="Winter">Winter</button>
-<button id="Snow">Snow</button>
+    <button id="infoButton">Show Information</button>
+    <div id="infoText" style="display: none;">
 
-<button id="infoButton">Show Information</button>
-<div id="infoText" style="display: none;">
+        <table style="width:40%">
 
-    <table style="width:40%">
+            <tr>
+                <th>Կերպար</th>
+                <th>Նկարագրություն</th>
+            </tr>
+            <tr>
+                <td>Խոտ</td>
+                <td>Խոտը բազմանում է հարևան 8 վանդակներում:
+                </td>
 
-        <tr>
-            <th>Կերպար</th>
-            <th>Նկարագրություն</th>
-        </tr>
-        <tr>
-            <td>Խոտ</td>
-            <td>Խոտը բազմանում է հարևան 8 վանդակներում:
-            </td>
+            </tr>
+            <tr>
+                <td>Խոտակեր</td>
+                <td>Խոտակերը ուտում է խոտին և էներգիան ավելացնելով բազմանում է: Իսկ չգտնելու դեպքում էներգիան
+                    աստիճաբանար
+                    իջնելով հավասարեցվում է 0-ի և խոտակերը մահանում է: </td>
+            </tr>
+            <tr>
+                <td>Գիշատիչ</td>
+                <td>Գիշատիչը ուտում է և՛ խոտին, և՛ խոտակերին: Գիշատիչը ուտելով խոտին կամ խոտակերին էներգիան ավելացնում է
+                    և
+                    բազմանում: Իսկ չգտնելու դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և գիշատիչը մահանում
+                    է:
+                </td>
+            </tr>
+            <tr>
+                <td>Կրակ</td>
+                <td>Կրակը «այրում է» խոտերը, խոտակերին ու գիշատչին: Ուտելով խոտերը/խոտակերին/գիշատչին էներգիան
+                    ավելացնում է
+                    և բազմանում: Հակառակ դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և գիշատիչը մահանում է:
+                </td>
+            </tr>
+            <tr>
+                <td>Ջուր</td>
+                <td>Ջուրը «հանգցնում է» կրակը: Ջուրը ուտելով կրակին իր էներգիան ավելացնում և բազմանում է:
+                </td>
+            </tr>
+        </table>
+    </div>
 
-        </tr>
-        <tr>
-            <td>Խոտակեր</td>
-            <td>Խոտակերը ուտում է խոտին և էներգիան ավելացնելով բազմանում է: Իսկ չգտնելու դեպքում էներգիան աստիճաբանար
-                իջնելով հավասարեցվում է 0-ի և խոտակերը մահանում է: </td>
-        </tr>
-        <tr>
-            <td>Գիշատիչ</td>
-            <td>Գիշատիչը ուտում է և՛ խոտին, և՛ խոտակերին: Գիշատիչը ուտելով խոտին կամ խոտակերին էներգիան ավելացնում է և
-                բազմանում: Իսկ չգտնելու դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և գիշատիչը մահանում է:
-            </td>
-        </tr>
-        <tr>
-            <td>Կրակ</td>
-            <td>Կրակը «այրում է» խոտերը, խոտակերին ու գիշատչին: Ուտելով խոտերը/խոտակերին/գիշատչին էներգիան ավելացնում է
-                և բազմանում: Հակառակ դեպքում էներգիան աստիճաբանար իջնելով հավասարեցվում է 0-ի և գիշատիչը մահանում է:
-            </td>
-        </tr>
-        <tr>
-            <td>Ջուր</td>
-            <td>Ջուրը «հանգցնում է» կրակը: Ջուրը ուտելով կրակին իր էներգիան ավելացնում և բազմանում է:
-            </td>
-        </tr>
-    </table>
-</div>
+    <body>
+        <div id="snow" count="200"></div>
+        <input id="toggle-snow" type="checkbox" checked="true" onclick="showSnow(this.checked == true)">
+        ToggleSnow
+        </input>
 
-</body>
+    </body>
 
 </html>
 
